@@ -515,81 +515,25 @@ img{max-width:100%;display:block}
   font-weight:500;
 }
 
-.gallery-foot{
-  text-align:center;
-  margin-top:60px;
-  padding-top:40px;
-  border-top:1px solid rgba(245,239,230,.12);
-  font-family:'Fraunces',serif;
-  font-style:italic;
-  font-size:clamp(18px,2vw,24px);
-  color:rgba(245,239,230,.75);
-  font-weight:300;
-  max-width:780px;
-  margin-left:auto;margin-right:auto;
-  line-height:1.5;
-}
 
 /* =========================================================
-   A CLÍNICA
+   A CLÍNICA — sem imagem por enquanto
    ========================================================= */
 .clinic{
   background:var(--cream);
   padding:140px 40px;
 }
 .clinic-inner{
-  max-width:1380px;margin:0 auto;
-  display:grid;
-  grid-template-columns:1fr 1.1fr;
-  gap:100px;
-  align-items:center;
+  max-width:1100px;margin:0 auto;
+  text-align:center;
 }
-.clinic-visual{
-  position:relative;
-  aspect-ratio:4/5;
-  background:var(--teal-deep);
-  border-radius:4px;
-  overflow:hidden;
+.clinic-head .section-tag{justify-content:center}
+.clinic-head .section-tag::after{
+  content:"";width:36px;height:1px;background:var(--teal-deep);
 }
-.clinic-visual img{
-  width:100%;height:100%;
-  object-fit:cover;
-  filter:saturate(.95) contrast(1.05);
-}
-
-.clinic-stat{
-  position:absolute;
-  bottom:32px;left:32px;
-  right:32px;
-  background:rgba(11,37,64,.94);
-  backdrop-filter:blur(10px);
-  color:var(--cream);
-  padding:24px 28px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:24px;
-  border-radius:2px;
-}
-.clinic-stat .item .num{
-  font-family:'Fraunces',serif;
-  font-size:36px;
-  line-height:1;
-  font-weight:400;
-  color:var(--teal);
-  font-style:italic;
-  margin-bottom:6px;
-}
-.clinic-stat .item .lab{
-  font-size:10px;
-  letter-spacing:.25em;
-  text-transform:uppercase;
-  color:rgba(245,239,230,.75);
-  font-weight:500;
-}
-
 .clinic-content h2{
   font-family:'Fraunces',serif;
-  font-size:clamp(36px,4.8vw,68px);
+  font-size:clamp(36px,5vw,72px);
   line-height:1;
   font-weight:400;
   letter-spacing:-.02em;
@@ -598,34 +542,130 @@ img{max-width:100%;display:block}
 }
 .clinic-content h2 .accent{font-style:italic;color:var(--teal-deep);font-weight:300}
 .clinic-content p{
-  font-size:16px;
+  font-size:17px;
   line-height:1.8;
   color:var(--ink);
   margin-bottom:22px;
-  max-width:560px;
+  max-width:680px;
+  margin-left:auto;margin-right:auto;
   font-weight:300;
 }
 .clinic-pillars{
-  margin-top:40px;
+  margin-top:80px;
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:repeat(4,1fr);
   gap:32px;
   border-top:1px solid var(--line);
-  padding-top:36px;
+  padding-top:64px;
+  text-align:left;
 }
-.pillar{}
+.pillar{
+  padding:0 8px;
+}
+.pillar .num{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:14px;
+  color:var(--teal-deep);
+  margin-bottom:12px;
+}
 .pillar .label{
   font-family:'Fraunces',serif;
   font-size:22px;
   color:var(--navy);
   font-weight:500;
-  margin-bottom:8px;
+  margin-bottom:10px;
+  line-height:1.25;
 }
 .pillar .desc{
   font-size:14px;
-  line-height:1.65;
+  line-height:1.7;
   color:var(--muted);
   font-weight:300;
+}
+
+/* Galeria do ambiente da clínica */
+.clinic-gallery{
+  margin-top:90px;
+  text-align:left;
+}
+.clinic-gallery-head{
+  text-align:center;
+  margin-bottom:36px;
+}
+.clinic-gallery-head .gal-tag{
+  font-size:11px;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:var(--teal-deep);
+  font-weight:500;
+  margin-bottom:8px;
+}
+.clinic-gallery-head .gal-title{
+  font-family:'Fraunces',serif;
+  font-size:clamp(24px,3vw,32px);
+  color:var(--navy);
+  font-weight:400;
+  letter-spacing:-.01em;
+}
+.clinic-gallery-head .gal-title .accent{font-style:italic;color:var(--teal-deep);font-weight:300}
+
+.gal-hero{
+  width:100%;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  border-radius:3px;
+  margin-bottom:18px;
+  background:var(--beige);
+}
+.gal-hero img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform .8s ease;
+}
+.gal-hero:hover img{transform:scale(1.03)}
+
+.gal-grid{
+  display:grid;
+  grid-template-columns:repeat(12, 1fr);
+  gap:18px;
+  grid-auto-rows:1fr;
+}
+.gal-cell{
+  position:relative;
+  overflow:hidden;
+  border-radius:3px;
+  background:var(--beige);
+}
+.gal-cell img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform .8s ease;
+}
+.gal-cell:hover img{transform:scale(1.04)}
+.gal-cell::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 70%,rgba(11,37,64,.35));
+  opacity:0;transition:opacity .35s ease;
+  pointer-events:none;
+}
+.gal-cell:hover::after{opacity:1}
+
+/* Posicionamento das células — 5 fotos (1 hero + 4 grade) */
+.gal-cell.tall{grid-column:span 4;aspect-ratio:3/4}
+.gal-cell.wide{grid-column:span 4;aspect-ratio:3/4}
+.gal-cell.tall-2{grid-column:span 4;aspect-ratio:3/4}
+.gal-cell.wide-2{grid-column:span 4;aspect-ratio:3/4}
+
+/* Galeria simplificada — 4 colunas iguais */
+.gal-grid-simple{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+.gal-grid-simple .gal-cell{
+  aspect-ratio:3/4;
+  grid-column:auto;
 }
 
 /* =========================================================
@@ -720,6 +760,23 @@ img{max-width:100%;display:block}
   text-transform:uppercase;
   color:var(--muted);
   font-weight:500;
+}
+.team-photo .badge{
+  position:absolute;
+  top:18px;left:18px;
+  background:rgba(11,37,64,.92);
+  backdrop-filter:blur(8px);
+  color:var(--teal);
+  padding:9px 16px;
+  font-size:10px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  font-weight:500;
+  border-radius:99px;
+  z-index:2;
+}
+.team-card.featured{
+  border-color:var(--teal-deep);
 }
 
 .team-info{
@@ -817,69 +874,22 @@ img{max-width:100%;display:block}
 .video-frame{
   position:relative;
   width:100%;
-  aspect-ratio:16/9;
-  background:
-    radial-gradient(circle at center, #1a3556 0%, var(--navy) 70%, #050d1a 100%);
-  border-radius:4px;
+  max-width:420px;
+  aspect-ratio:9/16;
+  margin:0 auto;
+  background:#000;
+  border-radius:18px;
   overflow:hidden;
-  box-shadow:0 30px 80px rgba(11,37,64,.25);
-}
-.video-frame::before{
-  content:"";position:absolute;inset:0;
-  background-image:
-    radial-gradient(circle at 1.5px 1.5px, rgba(111,184,176,.08) 1px, transparent 0);
-  background-size:24px 24px;
-  pointer-events:none;
+  box-shadow:
+    0 30px 80px rgba(11,37,64,.32),
+    0 0 0 8px rgba(11,37,64,.06);
 }
 .video-frame video{
   position:absolute;
-  top:50%;left:50%;
-  transform:translate(-50%,-50%);
-  height:100%;
-  width:auto;
-  max-width:100%;
-  object-fit:contain;
+  inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
   background:#000;
-}
-.video-frame-tag{
-  position:absolute;
-  top:18px;left:18px;
-  background:rgba(11,37,64,.85);
-  color:var(--cream);
-  padding:9px 16px;
-  font-size:10px;letter-spacing:.3em;text-transform:uppercase;
-  font-weight:500;
-  backdrop-filter:blur(8px);
-  z-index:3;
-  pointer-events:none;
-}
-.video-quote{
-  margin-top:48px;
-  text-align:center;
-  max-width:720px;
-  margin-left:auto;margin-right:auto;
-}
-.video-quote .stars{
-  color:var(--gold);
-  font-size:18px;
-  letter-spacing:4px;
-  margin-bottom:18px;
-}
-.video-quote blockquote{
-  font-family:'Fraunces',serif;
-  font-style:italic;
-  font-size:clamp(20px,2.2vw,26px);
-  line-height:1.5;
-  color:var(--navy);
-  font-weight:400;
-}
-.video-quote .cite{
-  margin-top:16px;
-  font-size:11px;
-  letter-spacing:.3em;
-  text-transform:uppercase;
-  color:var(--muted);
-  font-weight:500;
 }
 
 /* =========================================================
@@ -1130,16 +1140,129 @@ img{max-width:100%;display:block}
 .contact-block .val a:hover{color:var(--teal-deep)}
 
 .contact-map{
-  aspect-ratio:1/1;
+  display:flex;flex-direction:column;
+  gap:14px;
+}
+.contact-map-frame{
+  aspect-ratio:4/5;
   border-radius:2px;
   overflow:hidden;
   border:1px solid var(--line);
   background:var(--beige);
+  position:relative;
 }
-.contact-map iframe{
+.contact-map-frame iframe{
   width:100%;height:100%;
   border:0;
   filter:grayscale(.3) contrast(1.05);
+}
+.contact-map-frame .map-pin{
+  position:absolute;
+  top:14px;left:14px;
+  background:rgba(11,37,64,.94);
+  color:var(--cream);
+  padding:10px 16px;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-weight:500;
+  border-radius:99px;
+  display:flex;align-items:center;gap:8px;
+  backdrop-filter:blur(8px);
+  z-index:3;
+  pointer-events:none;
+}
+.contact-map-frame .map-pin::before{
+  content:"";
+  width:8px;height:8px;border-radius:50%;
+  background:var(--teal);
+  box-shadow:0 0 0 4px rgba(111,184,176,.28);
+}
+
+.map-actions{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.map-btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:14px 16px;
+  background:var(--navy);
+  color:var(--cream);
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-weight:500;
+  border-radius:2px;
+  transition:all .3s ease;
+  text-align:center;
+}
+.map-btn:hover{
+  background:var(--teal-deep);
+}
+.map-btn.alt{
+  background:transparent;
+  color:var(--navy);
+  border:1px solid var(--navy);
+}
+.map-btn.alt:hover{
+  background:var(--navy);
+  color:var(--cream);
+}
+
+.location-warning{
+  margin-top:30px;
+  padding:18px 22px;
+  background:rgba(168,139,92,.1);
+  border-left:3px solid var(--gold);
+  border-radius:2px;
+  display:flex;align-items:flex-start;gap:14px;
+}
+.location-warning .ic{
+  flex-shrink:0;
+  color:var(--gold);
+  margin-top:2px;
+}
+.location-warning .text{
+  font-size:13px;
+  line-height:1.65;
+  color:var(--ink);
+}
+.location-warning .text strong{
+  display:block;
+  font-family:'Fraunces',serif;
+  font-size:15px;
+  color:var(--navy);
+  font-weight:500;
+  margin-bottom:4px;
+}
+
+.streetview-frame{
+  aspect-ratio:16/9;
+  border-radius:2px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:var(--beige);
+  margin-top:30px;
+  position:relative;
+}
+.streetview-frame iframe{
+  width:100%;height:100%;
+  border:0;
+}
+.streetview-tag{
+  position:absolute;
+  top:14px;left:14px;
+  background:rgba(11,37,64,.94);
+  color:var(--cream);
+  padding:9px 16px;
+  font-size:10px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  font-weight:500;
+  border-radius:99px;
+  backdrop-filter:blur(8px);
+  z-index:3;
+  pointer-events:none;
 }
 
 /* =========================================================
@@ -1293,7 +1416,8 @@ img{max-width:100%;display:block}
   .treatment-row{grid-template-columns:50px 1fr 110px;gap:20px;padding:30px 0}
   .treatment-row .desc{display:none}
   .clinic{padding:90px 28px}
-  .clinic-inner{grid-template-columns:1fr;gap:60px}
+  .gal-grid-simple{grid-template-columns:repeat(2,1fr);gap:12px}
+  .gal-hero{aspect-ratio:16/10}
   .team{padding:90px 28px}
   .team-grid{grid-template-columns:repeat(2,1fr);gap:24px}
   .video-section{padding:90px 28px}
@@ -1383,10 +1507,7 @@ img{max-width:100%;display:block}
   .video-head{margin-bottom:36px}
   .video-head h2{font-size:32px}
   .video-head p{font-size:14px}
-  .video-frame{aspect-ratio:16/9}
-  .video-frame-tag{font-size:9px;padding:7px 12px;top:12px;left:12px}
-  .video-quote{margin-top:32px}
-  .video-quote blockquote{font-size:18px}
+  .video-frame{max-width:320px;border-radius:14px}
 
   .reviews{padding:70px 20px}
   .reviews-head{margin-bottom:36px}
@@ -1411,7 +1532,18 @@ img{max-width:100%;display:block}
   .contact-block{padding:22px 0;gap:18px}
   .contact-block .ic{width:38px;height:38px;min-width:38px}
   .contact-block .val{font-size:17px}
-  .contact-map{aspect-ratio:4/5}
+  .contact-map-frame{aspect-ratio:1/1}
+  .streetview-frame{aspect-ratio:4/3}
+  .map-actions{grid-template-columns:1fr;gap:8px}
+  .map-btn{padding:14px 18px;font-size:11px;letter-spacing:.12em}
+  .map-pin,.streetview-tag{font-size:9px;padding:7px 12px}
+  .location-warning{padding:16px 18px;gap:12px}
+  .location-warning .text{font-size:12px}
+  .location-warning .text strong{font-size:14px}
+  .clinic-gallery{margin-top:60px}
+  .clinic-gallery-head{margin-bottom:24px}
+  .gal-hero{aspect-ratio:4/3;margin-bottom:12px}
+  .gal-grid-simple{grid-template-columns:repeat(2,1fr);gap:10px}
 
   .cta-banner{padding:60px 20px}
   .cta-inner{flex-direction:column;align-items:flex-start;text-align:left;gap:28px}
@@ -1435,6 +1567,8 @@ img{max-width:100%;display:block}
   .contact-head h2{font-size:36px}
   .marquee-track{font-size:24px}
   .team-grid{grid-template-columns:1fr}
+  .gal-grid-simple{grid-template-columns:1fr;gap:10px}
+  .gal-grid-simple .gal-cell{aspect-ratio:16/10}
 }
 
 </style>
@@ -1480,7 +1614,7 @@ img{max-width:100%;display:block}
     <div class="hero-eyebrow">Sobral · Ceará · Brasil</div>
     <h1>A melhor versão do seu <span class="accent">sorriso</span> começa aqui.</h1>
     <p class="hero-lead">
-      Clínica odontológica especializada em sorrisos planejados. Aliamos técnica, estética e cuidado para entregar resultados naturais — em um atendimento personalizado, do primeiro contato à manutenção.
+      Clínica odontológica em Sobral. A gente cuida do seu sorriso com tempo, atenção e profissionalismo desde a primeira consulta.
     </p>
     <div class="hero-actions">
       <a href="https://wa.me/5588992152000" target="_blank" class="btn btn-primary">Agendar Avaliação</a>
@@ -1495,12 +1629,12 @@ img{max-width:100%;display:block}
       <div class="hero-meta-divider"></div>
       <div class="hero-meta-item">
         <div class="num">+500</div>
-        <div class="lab">Sorrisos transformados</div>
+        <div class="lab">Pacientes atendidos</div>
       </div>
       <div class="hero-meta-divider"></div>
       <div class="hero-meta-item">
-        <div class="num">10+</div>
-        <div class="lab">Anos de experiência</div>
+        <div class="num">Sobral</div>
+        <div class="lab">Centro · CE</div>
       </div>
     </div>
   </div>
@@ -1523,42 +1657,42 @@ img{max-width:100%;display:block}
   <div class="section-inner">
     <div class="treatments-head">
       <h2>O que <span class="accent">fazemos</span><br>por você.</h2>
-      <p>Cada procedimento é planejado caso a caso. Avaliamos sua saúde, sua estética e o seu objetivo — e construímos um plano feito sob medida para o seu sorriso.</p>
+      <p>Atendimento odontológico completo em um só lugar. Da consulta de rotina à reabilitação do sorriso.</p>
     </div>
 
     <div class="treatments-list">
       <a href="#contato" class="treatment-row">
         <div class="num">01 ·</div>
         <div class="name">Lentes de <span class="accent">Contato</span></div>
-        <div class="desc">Facetas ultrafinas em porcelana para um sorriso desenhado sob medida, com mínimo desgaste e máxima naturalidade.</div>
+        <div class="desc">Facetas finas em porcelana para deixar o sorriso bonito sem precisar mexer muito no dente.</div>
         <div class="arrow">Saiba mais →</div>
       </a>
 
       <a href="#contato" class="treatment-row">
         <div class="num">02 ·</div>
         <div class="name"><span class="accent">Clareamento</span> Dental</div>
-        <div class="desc">Protocolos clínicos e caseiros que devolvem o brilho natural dos dentes, com segurança e resultado uniforme.</div>
+        <div class="desc">Clareamento profissional feito na clínica ou em casa, sempre com acompanhamento da equipe.</div>
         <div class="arrow">Saiba mais →</div>
       </a>
 
       <a href="#contato" class="treatment-row">
         <div class="num">03 ·</div>
         <div class="name">Implantes <span class="accent">Dentários</span></div>
-        <div class="desc">Reposição de dentes perdidos com técnica avançada — função mastigatória e estética restauradas com naturalidade.</div>
+        <div class="desc">Recupere os dentes que faltam com implantes que devolvem mastigação, fala e o sorriso completo.</div>
         <div class="arrow">Saiba mais →</div>
       </a>
 
       <a href="#contato" class="treatment-row">
         <div class="num">04 ·</div>
         <div class="name"><span class="accent">Ortodontia</span> & Alinhadores</div>
-        <div class="desc">Aparelhos invisíveis e tradicionais para alinhar o sorriso com discrição e previsibilidade de resultado.</div>
+        <div class="desc">Aparelhos transparentes ou tradicionais para alinhar os dentes com discrição.</div>
         <div class="arrow">Saiba mais →</div>
       </a>
 
       <a href="#contato" class="treatment-row">
         <div class="num">05 ·</div>
         <div class="name">Prótese & <span class="accent">Reabilitação</span></div>
-        <div class="desc">Próteses fixas, removíveis e flexíveis para devolver função, conforto e estética ao sorriso.</div>
+        <div class="desc">Próteses fixas, removíveis e flexíveis para quem quer voltar a sorrir tranquilo.</div>
         <div class="arrow">Saiba mais →</div>
       </a>
     </div>
@@ -1571,128 +1705,119 @@ img{max-width:100%;display:block}
 <section class="section transformations" id="transforma">
   <div class="section-inner">
     <div class="transformations-head">
-      <div class="section-tag">Antes & depois</div>
+      <div class="section-tag">Antes e depois</div>
       <h2>Sorrisos <span class="accent">reais.</span></h2>
-      <p>Cada transformação é resultado de planejamento minucioso, técnica e dedicação. Conheça alguns dos sorrisos que tivemos a honra de transformar.</p>
+      <p>Resultados de pacientes que passaram pela clínica.</p>
     </div>
 
     <div class="gallery-grid">
       <div class="gallery-item">
-        <img src="03.jpg" alt="Antes e depois — Lentes de Contato">
-        <div class="meta">
-          <div class="num">Caso 01</div>
-          <div class="label">Lentes de Contato</div>
-        </div>
-      </div>
-      <div class="gallery-item">
         <img src="02.jpg" alt="Antes e depois — Estética Dental">
         <div class="meta">
-          <div class="num">Caso 02</div>
+          <div class="num">Caso 01</div>
           <div class="label">Estética Dental</div>
         </div>
       </div>
       <div class="gallery-item">
         <img src="05.jpg" alt="Antes e depois — Clareamento">
         <div class="meta">
-          <div class="num">Caso 03</div>
+          <div class="num">Caso 02</div>
           <div class="label">Clareamento</div>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="04.jpg" alt="Antes e depois — Sorriso Planejado">
-        <div class="meta">
-          <div class="num">Caso 04</div>
-          <div class="label">Sorriso Planejado</div>
         </div>
       </div>
       <div class="gallery-item">
         <img src="07.jpg" alt="Antes e depois — Lentes e Prótese">
         <div class="meta">
-          <div class="num">Caso 05</div>
-          <div class="label">Lentes & Prótese</div>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="01.jpg" alt="Antes e depois — Reabilitação">
-        <div class="meta">
-          <div class="num">Caso 06</div>
-          <div class="label">Reabilitação</div>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="09.jpg" alt="Antes e depois — Prótese Total">
-        <div class="meta">
-          <div class="num">Caso 07</div>
-          <div class="label">Prótese Total</div>
+          <div class="num">Caso 03</div>
+          <div class="label">Lentes e Prótese</div>
         </div>
       </div>
       <div class="gallery-item">
         <img src="08.jpg" alt="Antes e depois — Reabilitação Oral">
         <div class="meta">
-          <div class="num">Caso 08</div>
+          <div class="num">Caso 04</div>
           <div class="label">Reabilitação Oral</div>
         </div>
       </div>
       <div class="gallery-item">
         <img src="06.jpg" alt="Antes e depois — Prótese Flexível">
         <div class="meta">
-          <div class="num">Caso 09</div>
+          <div class="num">Caso 05</div>
           <div class="label">Prótese Flexível</div>
         </div>
       </div>
-    </div>
-
-    <div class="gallery-foot">
-      "Cada sorriso é um projeto único — pensado para combinar com o rosto, a personalidade e a história de quem o usa."
+      <div class="gallery-item">
+        <img src="03.jpg" alt="Antes e depois — Lentes de Contato">
+        <div class="meta">
+          <div class="num">Caso 06</div>
+          <div class="label">Lentes de Contato</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     A CLÍNICA
+     A CLÍNICA — sem imagem por enquanto
 ============================================================ -->
 <section class="clinic" id="clinica">
   <div class="clinic-inner">
-    <div class="clinic-visual">
-      <img src="02.jpg" alt="Clínica Sorria Sobral">
-      <div class="clinic-stat">
-        <div class="item">
-          <div class="num">+500</div>
-          <div class="lab">Pacientes<br>atendidos</div>
-        </div>
-        <div class="item">
-          <div class="num">5.0</div>
-          <div class="lab">Avaliação<br>no Google</div>
-        </div>
-      </div>
+    <div class="clinic-head">
+      <div class="section-tag">A Clínica</div>
     </div>
 
     <div class="clinic-content">
-      <div class="section-tag">A Clínica</div>
-      <h2>Uma odontologia<br>que <span class="accent">cuida, planeja</span><br>e entrega.</h2>
-      <p>
-        Na Sorria Sobral, sorriso bonito não é destino — é projeto. Reunimos uma equipe especializada de cirurgiões-dentistas que trabalham em conjunto para oferecer um plano de tratamento completo: do diagnóstico ao acabamento final, tudo pensado para o resultado mais natural possível.
-      </p>
-      <p>
-        Trabalhamos com tecnologia de ponta para diagnósticos precisos, planejamento digital do sorriso e procedimentos minimamente invasivos. O resultado: tratamentos mais rápidos, confortáveis e previsíveis — em um ambiente que prioriza o seu conforto do começo ao fim.
-      </p>
+      <h2>Um lugar pensado para<br>o seu <span class="accent">sorriso.</span></h2>
+      <p>A Sorria Sobral fica no centro de Sobral e atende com hora marcada. Uma equipe de cirurgiãs-dentistas trabalha em conjunto para cuidar de cada paciente com calma, técnica e responsabilidade.</p>
+      <p>A gente acredita que ir ao dentista pode (e deve) ser uma experiência tranquila. Por isso o atendimento é planejado para que você se sinta confortável e bem informado em todas as consultas.</p>
 
       <div class="clinic-pillars">
         <div class="pillar">
-          <div class="label">Equipe Multidisciplinar</div>
-          <div class="desc">Cirurgiões-dentistas especialistas em diferentes áreas, atuando de forma integrada no seu plano de tratamento.</div>
+          <div class="num">01</div>
+          <div class="label">Equipe completa</div>
+          <div class="desc">Profissionais com especialidades diferentes trabalhando juntos no mesmo plano de tratamento.</div>
         </div>
         <div class="pillar">
-          <div class="label">Planejamento Digital</div>
-          <div class="desc">Tecnologia que permite visualizar o resultado antes mesmo do procedimento começar — sem surpresas.</div>
+          <div class="num">02</div>
+          <div class="label">Planejamento digital</div>
+          <div class="desc">Você vê como o sorriso vai ficar antes mesmo de começar o tratamento.</div>
         </div>
         <div class="pillar">
-          <div class="label">Atendimento Personalizado</div>
-          <div class="desc">Cada paciente é único. Cada tratamento é desenhado caso a caso, com escuta e tempo dedicado.</div>
+          <div class="num">03</div>
+          <div class="label">Atendimento próximo</div>
+          <div class="desc">Tempo para ouvir, explicar e planejar do jeito certo — sem pressa.</div>
         </div>
         <div class="pillar">
-          <div class="label">Resultado Natural</div>
-          <div class="desc">Estética que respeita a anatomia, a expressão e o estilo de vida de quem usa o sorriso.</div>
+          <div class="num">04</div>
+          <div class="label">Resultado natural</div>
+          <div class="desc">Sorrisos que combinam com o rosto e com o jeito de cada pessoa.</div>
+        </div>
+      </div>
+
+      <!-- GALERIA DO AMBIENTE -->
+      <div class="clinic-gallery">
+        <div class="clinic-gallery-head">
+          <div class="gal-tag">Conheça a clínica</div>
+          <div class="gal-title">Estrutura <span class="accent">por dentro.</span></div>
+        </div>
+
+        <div class="gal-hero">
+          <img src="ambiente.jpeg" alt="Recepção da Sorria Sobral" loading="lazy">
+        </div>
+
+        <div class="gal-grid-simple">
+          <div class="gal-cell">
+            <img src="ambiente%2003.jpeg" alt="Recepção da Sorria Sobral - vista lateral" loading="lazy">
+          </div>
+          <div class="gal-cell">
+            <img src="ambiente%2001.jpeg" alt="Consultório odontológico" loading="lazy">
+          </div>
+          <div class="gal-cell">
+            <img src="ambiente%2004.jpeg" alt="Consultório odontológico completo" loading="lazy">
+          </div>
+          <div class="gal-cell">
+            <img src="ambiente%2002.jpeg" alt="Consultório odontológico — outra vista" loading="lazy">
+          </div>
         </div>
       </div>
     </div>
@@ -1706,135 +1831,62 @@ img{max-width:100%;display:block}
   <div class="team-inner">
     <div class="team-head">
       <div class="section-tag">Nossa Equipe</div>
-      <h2>Profissionais que cuidam<br>do seu <span class="accent">sorriso.</span></h2>
-      <p>Conheça a equipe de cirurgiões-dentistas da Sorria Sobral — especialistas que atuam de forma integrada para entregar o melhor resultado em cada etapa do seu tratamento.</p>
+      <h2>Quem cuida<br>do seu <span class="accent">sorriso.</span></h2>
+      <p>As profissionais que vão te atender na clínica. Cada uma com a sua especialidade.</p>
     </div>
 
     <div class="team-grid">
 
-      <!-- ⬇️ PROFISSIONAL 01 — substitua foto, nome, CRO e bio ⬇️ -->
-      <article class="team-card">
+      <!-- DRA. INGRID NELO — Responsável Técnica -->
+      <article class="team-card featured">
         <div class="team-photo">
-          <!-- Substituir pela foto do profissional (proporção 4:5) -->
-          <div class="placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-            <div class="ph-label">Foto do profissional</div>
-            <div class="ph-hint">Proporção 4:5</div>
-          </div>
+          <img src="Dra.%20Ingrid%20Nelo.jpg" alt="Dra. Ingrid Nelo — Cirurgiã-Dentista">
+          <span class="badge">Responsável Técnica</span>
         </div>
         <div class="team-info">
-          <div class="role">Cirurgião(ã)-Dentista</div>
-          <h3>[Nome do profissional]</h3>
-          <div class="cro">CRO-CE [número]</div>
-          <p class="bio">Breve descrição do profissional — formação, especialidade e áreas de atuação. Substitua este texto pelas informações reais.</p>
+          <div class="role">Cirurgiã-Dentista</div>
+          <h3>Dra. Ingrid Nelo</h3>
+          <div class="cro">CRO-CE 12833</div>
+          <p class="bio">Clínica geral e especialista em ortodontia, harmonização facial e estética do sorriso em fluxo digital. Une tecnologia, precisão e olhar treinado para transformar sorrisos com naturalidade.</p>
           <div class="specs">
-            <span class="spec-tag">Especialidade</span>
-            <span class="spec-tag">Área</span>
+            <span class="spec-tag">Ortodontia</span>
+            <span class="spec-tag">Estética do Sorriso</span>
+            <span class="spec-tag">Harmonização Facial</span>
           </div>
         </div>
       </article>
 
-      <!-- ⬇️ PROFISSIONAL 02 ⬇️ -->
+      <!-- DRA. SARAH BRYNER -->
       <article class="team-card">
         <div class="team-photo">
-          <div class="placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-            <div class="ph-label">Foto do profissional</div>
-            <div class="ph-hint">Proporção 4:5</div>
-          </div>
+          <img src="Dra.%20Sarah%20Bryner.jpg" alt="Dra. Sarah Bryner — Cirurgiã-Dentista">
         </div>
         <div class="team-info">
-          <div class="role">Cirurgião(ã)-Dentista</div>
-          <h3>[Nome do profissional]</h3>
-          <div class="cro">CRO-CE [número]</div>
-          <p class="bio">Breve descrição do profissional — formação, especialidade e áreas de atuação. Substitua este texto pelas informações reais.</p>
+          <div class="role">Cirurgiã-Dentista</div>
+          <h3>Dra. Sarah Bryner</h3>
+          <div class="cro">Clínica Geral</div>
+          <p class="bio">Atende crianças e pacientes com necessidades especiais, com cuidado, carinho e atenção. Foco em inclusão e em uma experiência tranquila no consultório.</p>
           <div class="specs">
-            <span class="spec-tag">Especialidade</span>
-            <span class="spec-tag">Área</span>
+            <span class="spec-tag">Odontopediatria</span>
+            <span class="spec-tag">Pacientes PNE</span>
           </div>
         </div>
       </article>
 
-      <!-- ⬇️ PROFISSIONAL 03 ⬇️ -->
+      <!-- DRA. LETÍCIA AZEVEDO -->
       <article class="team-card">
         <div class="team-photo">
-          <div class="placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-            <div class="ph-label">Foto do profissional</div>
-            <div class="ph-hint">Proporção 4:5</div>
-          </div>
+          <img src="Dra.%20Leticia%20Azevedo.jpg" alt="Dra. Letícia Azevedo — Cirurgiã-Dentista">
         </div>
         <div class="team-info">
-          <div class="role">Cirurgião(ã)-Dentista</div>
-          <h3>[Nome do profissional]</h3>
-          <div class="cro">CRO-CE [número]</div>
-          <p class="bio">Breve descrição do profissional — formação, especialidade e áreas de atuação. Substitua este texto pelas informações reais.</p>
+          <div class="role">Cirurgiã-Dentista</div>
+          <h3>Dra. Letícia Azevedo</h3>
+          <div class="cro">Implantes e Endodontia</div>
+          <p class="bio">Especialista em implantes dentários, cirurgia de sisos e tratamento de canal. Compromisso com tratamentos completos, seguros e de alta qualidade.</p>
           <div class="specs">
-            <span class="spec-tag">Especialidade</span>
-            <span class="spec-tag">Área</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- ⬇️ PROFISSIONAL 04 (opcional — duplique para adicionar mais) ⬇️ -->
-      <article class="team-card">
-        <div class="team-photo">
-          <div class="placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-            <div class="ph-label">Foto do profissional</div>
-            <div class="ph-hint">Proporção 4:5</div>
-          </div>
-        </div>
-        <div class="team-info">
-          <div class="role">Cirurgião(ã)-Dentista</div>
-          <h3>[Nome do profissional]</h3>
-          <div class="cro">CRO-CE [número]</div>
-          <p class="bio">Breve descrição do profissional — formação, especialidade e áreas de atuação. Substitua este texto pelas informações reais.</p>
-          <div class="specs">
-            <span class="spec-tag">Especialidade</span>
-            <span class="spec-tag">Área</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- ⬇️ PROFISSIONAL 05 (opcional) ⬇️ -->
-      <article class="team-card">
-        <div class="team-photo">
-          <div class="placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-            <div class="ph-label">Foto do profissional</div>
-            <div class="ph-hint">Proporção 4:5</div>
-          </div>
-        </div>
-        <div class="team-info">
-          <div class="role">Cirurgião(ã)-Dentista</div>
-          <h3>[Nome do profissional]</h3>
-          <div class="cro">CRO-CE [número]</div>
-          <p class="bio">Breve descrição do profissional — formação, especialidade e áreas de atuação. Substitua este texto pelas informações reais.</p>
-          <div class="specs">
-            <span class="spec-tag">Especialidade</span>
-            <span class="spec-tag">Área</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- ⬇️ PROFISSIONAL 06 (opcional) ⬇️ -->
-      <article class="team-card">
-        <div class="team-photo">
-          <div class="placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-            <div class="ph-label">Foto do profissional</div>
-            <div class="ph-hint">Proporção 4:5</div>
-          </div>
-        </div>
-        <div class="team-info">
-          <div class="role">Cirurgião(ã)-Dentista</div>
-          <h3>[Nome do profissional]</h3>
-          <div class="cro">CRO-CE [número]</div>
-          <p class="bio">Breve descrição do profissional — formação, especialidade e áreas de atuação. Substitua este texto pelas informações reais.</p>
-          <div class="specs">
-            <span class="spec-tag">Especialidade</span>
-            <span class="spec-tag">Área</span>
+            <span class="spec-tag">Implantes</span>
+            <span class="spec-tag">Cirurgia</span>
+            <span class="spec-tag">Endodontia</span>
           </div>
         </div>
       </article>
@@ -1849,23 +1901,16 @@ img{max-width:100%;display:block}
 <section class="video-section" id="depoimentos">
   <div class="video-inner">
     <div class="video-head">
-      <div class="section-tag">Depoimento em vídeo</div>
-      <h2>Quem conta é <span class="accent">quem viveu.</span></h2>
-      <p>Histórias verdadeiras de pacientes que confiaram à Sorria Sobral o desafio de transformar seu sorriso.</p>
+      <div class="section-tag">Depoimento</div>
+      <h2>Quem viveu, <span class="accent">conta melhor.</span></h2>
+      <p>A experiência da Dona Edna na Sorria Sobral.</p>
     </div>
 
     <div class="video-frame">
-      <span class="video-frame-tag">Depoimento Real</span>
-      <video controls playsinline preload="metadata" poster="03.jpg">
-        <source src="video%20depoimento.mp4" type="video/mp4">
+      <video controls playsinline preload="metadata" poster="Capa%20depoimento%2002.png">
+        <source src="Depoimento%2002.mp4" type="video/mp4">
         Seu navegador não suporta vídeo HTML5.
       </video>
-    </div>
-
-    <div class="video-quote">
-      <div class="stars">★★★★★</div>
-      <blockquote>"Saí da clínica com um sorriso que eu não imaginava ser possível. O cuidado, o profissionalismo e o resultado superaram tudo."</blockquote>
-      <div class="cite">Paciente Sorria Sobral</div>
     </div>
   </div>
 </section>
@@ -1875,7 +1920,7 @@ img{max-width:100%;display:block}
 ============================================================ -->
 <section class="reviews">
   <div class="reviews-head">
-    <h2>O que dizem<br>os <span class="accent">pacientes.</span></h2>
+    <h2>Avaliações dos<br>nossos <span class="accent">pacientes.</span></h2>
     <div class="reviews-rating">
       <div class="num">5.0</div>
       <div class="stars">★★★★★</div>
@@ -1886,7 +1931,7 @@ img{max-width:100%;display:block}
   <div class="reviews-grid">
     <div class="review-card">
       <div class="stars">★★★★★</div>
-      <p>"Atendimento impecável do início ao fim. Equipe extremamente atenciosa e profissional. Saí da clínica com um sorriso que eu não imaginava ser possível."</p>
+      <p>"Atendimento muito bom do começo ao fim. Equipe atenciosa e dedicada. Fiquei feliz com o resultado."</p>
       <div class="author">
         <div class="avatar">M</div>
         <div>
@@ -1898,7 +1943,7 @@ img{max-width:100%;display:block}
 
     <div class="review-card">
       <div class="stars">★★★★★</div>
-      <p>"Ambiente lindo, equipe acolhedora e um cuidado de outro nível. Fiz clareamento e o resultado superou minhas expectativas. Recomendo de olhos fechados."</p>
+      <p>"Clínica limpa, equipe acolhedora e um cuidado diferenciado. Fiz clareamento e gostei muito do resultado."</p>
       <div class="author">
         <div class="avatar">R</div>
         <div>
@@ -1910,7 +1955,7 @@ img{max-width:100%;display:block}
 
     <div class="review-card">
       <div class="stars">★★★★★</div>
-      <p>"A clínica mudou a minha vida. Eu tinha vergonha de sorrir e hoje sorrio o dia inteiro. Atendimento humano, ambiente impecável e equipe de excelência."</p>
+      <p>"Eu tinha vergonha de sorrir e hoje sorrio sem medo. Atendimento humano e ambiente bem cuidado."</p>
       <div class="author">
         <div class="avatar">J</div>
         <div>
@@ -1922,7 +1967,7 @@ img{max-width:100%;display:block}
 
     <div class="review-card">
       <div class="stars">★★★★★</div>
-      <p>"Profissionalismo e cuidado em cada detalhe. Fiz a reabilitação completa e fui muito bem orientada em todas as etapas do tratamento."</p>
+      <p>"Cuidado em cada detalhe. Fiz a reabilitação completa e fui bem orientada em cada etapa do tratamento."</p>
       <div class="author">
         <div class="avatar">A</div>
         <div>
@@ -1934,7 +1979,7 @@ img{max-width:100%;display:block}
 
     <div class="review-card">
       <div class="stars">★★★★★</div>
-      <p>"A clínica é maravilhosa. Equipe atenciosa e bem preparada. Os profissionais fazem a gente se sentir em casa do primeiro ao último atendimento."</p>
+      <p>"Equipe atenciosa e bem preparada. As profissionais fazem a gente se sentir em casa nos atendimentos."</p>
       <div class="author">
         <div class="avatar">L</div>
         <div>
@@ -1946,7 +1991,7 @@ img{max-width:100%;display:block}
 
     <div class="review-card">
       <div class="stars">★★★★★</div>
-      <p>"Sem palavras para o resultado. Minha autoestima voltou. Indico a Sorria Sobral para todos que querem um trabalho bem feito e atendimento de qualidade."</p>
+      <p>"Minha autoestima voltou depois do tratamento. Indico a Sorria Sobral para quem quer um trabalho bem feito."</p>
       <div class="author">
         <div class="avatar">G</div>
         <div>
@@ -1964,51 +2009,51 @@ img{max-width:100%;display:block}
 <section class="faq-section">
   <div class="faq-inner">
     <div class="faq-side">
-      <div class="section-tag">FAQ</div>
+      <div class="section-tag">Dúvidas frequentes</div>
       <h2>Perguntas <span class="accent">frequentes.</span></h2>
-      <p>Reunimos algumas das dúvidas mais comuns dos nossos pacientes. Se a sua não estiver aqui, fale com a gente.</p>
+      <p>As dúvidas que mais aparecem na recepção. Se a sua não estiver aqui, é só chamar no WhatsApp.</p>
     </div>
 
     <div class="faq-list">
       <details class="faq-item">
-        <summary>Como funciona a primeira avaliação? <span class="ind">+</span></summary>
+        <summary>Como funciona a primeira consulta? <span class="ind">+</span></summary>
         <div class="answer">
-          A avaliação inicial é feita sem custo e sem compromisso. Ouvimos seu objetivo, avaliamos sua saúde bucal, fazemos os exames necessários e apresentamos um plano de tratamento personalizado, com prazos, etapas e investimento detalhados.
+          A primeira consulta é uma avaliação. A gente conversa sobre o que você quer, examina sua boca e monta um plano de tratamento com etapas, prazos e valores. Sem pressão para fechar na hora.
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>Lentes de contato desgastam o dente? <span class="ind">+</span></summary>
+        <summary>Lentes de contato dental estragam o dente? <span class="ind">+</span></summary>
         <div class="answer">
-          Quando bem indicadas e executadas, o desgaste é mínimo — em muitos casos, praticamente inexistente. Trabalhamos com técnicas conservadoras, priorizando preservar ao máximo a estrutura natural do seu dente.
+          Quando o caso é bem indicado, o desgaste é pequeno — em muitas situações quase nenhum. A gente trabalha com técnicas que preservam o máximo possível do dente natural.
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>Quanto tempo dura um tratamento de lentes? <span class="ind">+</span></summary>
+        <summary>Quanto tempo demora um tratamento de lentes? <span class="ind">+</span></summary>
         <div class="answer">
-          Depende do caso. Em média, o tratamento completo é finalizado entre 2 e 4 sessões, podendo ser concluído em poucas semanas. Tudo é planejado digitalmente antes de iniciar, o que torna o processo previsível e ágil.
+          Depende do caso, mas em média leva de 2 a 4 sessões. O planejamento é feito antes de começar, então você já sabe quantas visitas vai precisar.
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>Vocês trabalham com parcelamento? <span class="ind">+</span></summary>
+        <summary>Vocês parcelam? <span class="ind">+</span></summary>
         <div class="answer">
-          Sim. Oferecemos condições especiais de pagamento e parcelamento em cartão para que você realize seu tratamento com tranquilidade. As condições são apresentadas durante a avaliação.
+          Parcelamos em cartão. As condições são apresentadas na avaliação, junto com o orçamento do seu tratamento.
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>Atendem com plano odontológico? <span class="ind">+</span></summary>
+        <summary>Atendem por plano odontológico? <span class="ind">+</span></summary>
         <div class="answer">
-          Trabalhamos com atendimento particular, oferecendo condições facilitadas. Para procedimentos específicos, podemos avaliar reembolso por convênios — fale com nossa recepção para mais detalhes.
+          O atendimento é particular. Para alguns procedimentos é possível pedir reembolso ao convênio — vale conversar com a recepção sobre o seu caso.
         </div>
       </details>
 
       <details class="faq-item">
         <summary>Onde fica a clínica? <span class="ind">+</span></summary>
         <div class="answer">
-          Estamos na Rua Desembargador Moreira da Rocha, 757 — Centro, Sobral/CE. Atendemos mediante agendamento prévio. Fale com a gente pelo WhatsApp (88) 99215-2000.
+          Rua Desembargador Moreira da Rocha, 757 — Centro, Sobral/CE. Atendimento com hora marcada. Para agendar: (88) 99215-2000.
         </div>
       </details>
     </div>
@@ -2021,9 +2066,9 @@ img{max-width:100%;display:block}
 <section class="contact" id="contato">
   <div class="contact-inner">
     <div class="contact-head">
-      <div class="section-tag">Vamos conversar</div>
-      <h2>A sua vez de <span class="accent">sorrir.</span></h2>
-      <p>Agende sua avaliação e descubra um plano de tratamento feito para você. Atendimento personalizado, do início ao fim.</p>
+      <div class="section-tag">Contato</div>
+      <h2>Fale com <span class="accent">a gente.</span></h2>
+      <p>Agende sua avaliação pelo WhatsApp ou venha conhecer a clínica. Atendemos com hora marcada.</p>
     </div>
 
     <div class="contact-grid">
@@ -2070,7 +2115,46 @@ img{max-width:100%;display:block}
       </div>
 
       <div class="contact-map">
-        <iframe src="https://maps.google.com/maps?q=Rua%20Desembargador%20Moreira%20da%20Rocha%2C%20757%2C%20Centro%2C%20Sobral%20CE&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" title="Mapa da clínica Sorria Sobral"></iframe>
+        <div class="contact-map-frame">
+          <span class="map-pin">Sorria Sobral · Aqui</span>
+          <iframe
+            src="https://maps.google.com/maps?q=Sorria%20Sobral%20Rua%20Desembargador%20Moreira%20da%20Rocha%20757%20Centro%20Sobral%20CE&t=&z=17&ie=UTF8&iwloc=&output=embed"
+            loading="lazy"
+            title="Mapa da clínica Sorria Sobral"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+
+        <div class="map-actions">
+          <a href="https://share.google/jzeZ0HkKy1VlNSxXw" target="_blank" rel="noopener" class="map-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Abrir no Google Maps
+          </a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Sorria+Sobral+Rua+Desembargador+Moreira+da+Rocha+757+Centro+Sobral+CE" target="_blank" rel="noopener" class="map-btn alt">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+            Como chegar
+          </a>
+        </div>
+
+        <div class="streetview-frame">
+          <span class="streetview-tag">Vista da rua · 360°</span>
+          <iframe
+            src="https://maps.google.com/maps?q=Sorria%20Sobral%20Rua%20Desembargador%20Moreira%20da%20Rocha%20757%20Centro%20Sobral%20CE&t=k&z=18&ie=UTF8&iwloc=&output=embed&layer=c"
+            loading="lazy"
+            title="Vista 360 da Sorria Sobral"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+
+        <div class="location-warning">
+          <div class="ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div class="text">
+            <strong>Atenção ao endereço</strong>
+            Existe outra clínica com nome semelhante em Sobral. A <strong style="display:inline;color:var(--teal-deep);font-style:italic;">Sorria Sobral</strong> fica na <strong style="display:inline">Rua Desembargador Moreira da Rocha, 757 — Centro</strong>. Use o botão acima para abrir a localização correta no Google Maps.
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2081,7 +2165,7 @@ img{max-width:100%;display:block}
 ============================================================ -->
 <section class="cta-banner">
   <div class="cta-inner">
-    <h2>Pronto para <span class="accent">começar?</span><br>O seu novo sorriso te espera.</h2>
+    <h2>Vamos cuidar do<br>seu <span class="accent">sorriso?</span></h2>
     <a href="https://wa.me/5588992152000" target="_blank" class="cta-btn">Agendar pelo WhatsApp →</a>
   </div>
 </section>
@@ -2095,7 +2179,7 @@ img{max-width:100%;display:block}
       <div>
         <div class="footer-brand">Sorria <span class="accent">Sobral</span></div>
         <div class="footer-brand-sub">Odontologia · Sobral / CE</div>
-        <p>A melhor versão do seu sorriso começa aqui. Especialistas em transformar sorrisos com planejamento e naturalidade.</p>
+        <p>Clínica odontológica em Sobral. Atendimento com hora marcada, de segunda a sábado.</p>
         <div class="social-row">
           <a href="https://www.instagram.com/sorriasobral/" target="_blank" aria-label="Instagram">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4A4 4 0 1 1 12.6 8 4 4 0 0 1 16 11.4z"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
