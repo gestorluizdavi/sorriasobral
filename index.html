@@ -501,18 +501,28 @@ img{max-width:100%;display:block}
   font-weight:300;
 }
 
-.gallery-grid{
+.gallery-rows{
+  display:flex;
+  flex-direction:column;
+  gap:36px;
+}
+.gallery-featured-row{
   display:grid;
-  grid-template-columns:repeat(4, 1fr);
+  grid-template-columns:repeat(3, 1fr);
   gap:24px;
+}
+.gallery-regular-row{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:24px;
+  max-width:780px;
+  margin:0 auto;
+  width:100%;
 }
 .gallery-item{
   display:flex;
   flex-direction:column;
   gap:14px;
-}
-.gallery-item.featured{
-  grid-column:span 2;
 }
 .gallery-item img{
   width:100%;
@@ -522,15 +532,12 @@ img{max-width:100%;display:block}
   border-radius:2px;
   transition:transform .6s ease, box-shadow .6s ease;
 }
-.gallery-item.featured img{
-  aspect-ratio:8/5;
-}
-.gallery-item.featured .meta-below .label{
-  font-size:22px;
-}
 .gallery-item:hover img{
   transform:translateY(-3px);
   box-shadow:0 20px 40px rgba(0,0,0,.35);
+}
+.gallery-featured-row .gallery-item .meta-below .label{
+  font-size:20px;
 }
 .gallery-item .meta-below{
   display:flex;
@@ -647,6 +654,13 @@ img{max-width:100%;display:block}
   letter-spacing:-.01em;
 }
 .clinic-gallery-head .gal-title .accent{font-style:italic;color:var(--teal-deep);font-weight:300}
+.clinic-gallery-head .gal-sub{
+  margin-top:12px;
+  font-size:15px;
+  line-height:1.65;
+  color:var(--muted);
+  font-weight:300;
+}
 
 .gal-hero{
   width:100%;
@@ -1633,11 +1647,32 @@ img{max-width:100%;display:block}
 
   .transformations-head h2{font-size:34px}
   .transformations-head p{font-size:14px}
-  .gallery-grid{grid-template-columns:1fr 1fr;gap:14px}
-  .gallery-item{gap:10px}
-  .gallery-item.featured{grid-column:span 2}
-  .gallery-item.featured img{aspect-ratio:8/5}
-  .gallery-item.featured .meta-below .label{font-size:18px}
+  .gallery-rows{gap:20px}
+  .gallery-featured-row{
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    gap:12px;
+    padding:4px 0 14px;
+    margin:0 -20px;
+    padding-left:20px;
+    padding-right:20px;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .gallery-featured-row::-webkit-scrollbar{display:none}
+  .gallery-featured-row .gallery-item{
+    flex:0 0 78%;
+    scroll-snap-align:start;
+    gap:10px;
+  }
+  .gallery-regular-row{
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    max-width:none;
+  }
+  .gallery-regular-row .gallery-item{gap:10px}
+  .gallery-featured-row .gallery-item .meta-below .label{font-size:16px}
   .gallery-item .meta-below .label{font-size:14px}
   .gallery-item .meta-below .num{font-size:9px}
 
@@ -1743,9 +1778,8 @@ img{max-width:100%;display:block}
 
 @media (max-width: 380px){
   .hero h1{font-size:38px}
-  .gallery-grid{grid-template-columns:1fr;gap:14px}
-  .gallery-item.featured{grid-column:span 1}
-  .gallery-item.featured img{aspect-ratio:4/5}
+  .gallery-featured-row .gallery-item{flex:0 0 86%}
+  .gallery-regular-row{grid-template-columns:1fr 1fr;gap:10px}
   .contact-head h2{font-size:36px}
   .marquee-track{font-size:24px}
   .team-grid{grid-template-columns:1fr}
@@ -1801,7 +1835,7 @@ img{max-width:100%;display:block}
     <div class="hero-eyebrow">Sobral · Ceará · Brasil</div>
     <h1>A melhor versão do seu <span class="accent">sorriso</span> começa aqui.</h1>
     <p class="hero-lead">
-      Clínica odontológica em Sobral. A gente cuida do seu sorriso com tempo, atenção e profissionalismo desde a primeira consulta.
+      Clínica odontológica em Sobral. Cuidamos do seu sorriso com atenção, cuidado e profissionalismo desde a primeira consulta.
     </p>
     <div class="hero-actions">
       <a href="https://wa.me/5588992152000?text=Ol%C3%A1!%20Vim%20pela%20p%C3%A1gina%20da%20Sorria%20Sobral%20e%20tenho%20interesse%20em%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" class="btn btn-primary">Agendar Avaliação</a>
@@ -1815,7 +1849,7 @@ img{max-width:100%;display:block}
       </div>
       <div class="hero-meta-divider"></div>
       <div class="hero-meta-item">
-        <div class="num">+200 mil</div>
+        <div class="num">+2 mil</div>
         <div class="lab">Pacientes atendidos</div>
       </div>
       <div class="hero-meta-divider"></div>
@@ -1852,7 +1886,8 @@ img{max-width:100%;display:block}
         <div class="num">01 ·</div>
         <div class="name">Estética do <span class="accent">Sorriso</span></div>
         <ul>
-          <li>Lentes de contato e facetas</li>
+          <li>Lentes de contato dental</li>
+          <li>Facetas em porcelana</li>
           <li>Clareamento dental profissional</li>
         </ul>
         <div class="arrow">Saiba mais →</div>
@@ -1864,7 +1899,7 @@ img{max-width:100%;display:block}
         <ul>
           <li>Implantes dentários</li>
           <li>Próteses fixas e removíveis</li>
-          <li>Cirurgias complexas</li>
+          <li>Cirurgias e reabilitação oral</li>
         </ul>
         <div class="arrow">Saiba mais →</div>
       </a>
@@ -1874,7 +1909,7 @@ img{max-width:100%;display:block}
         <div class="name">Ortodontia e <span class="accent">Endodontia</span></div>
         <ul>
           <li>Aparelhos transparentes e tradicionais</li>
-          <li>Tratamento de canal</li>
+          <li>Tratamento de canal especializado</li>
         </ul>
         <div class="arrow">Saiba mais →</div>
       </a>
@@ -1884,7 +1919,8 @@ img{max-width:100%;display:block}
         <div class="name">Saúde e <span class="accent">Tecnologia</span></div>
         <ul>
           <li>Limpeza, profilaxia e restaurações</li>
-          <li>Fluxo digital com scanner 3D</li>
+          <li>Escaneamento digital 3D</li>
+          <li>Planejamento digital do sorriso</li>
         </ul>
         <div class="arrow">Saiba mais →</div>
       </a>
@@ -1903,55 +1939,46 @@ img{max-width:100%;display:block}
       <p>Resultados de pacientes que passaram pela clínica.</p>
     </div>
 
-    <div class="gallery-grid">
-      <div class="gallery-item featured">
-        <img src="2026%2001.jpeg" alt="Antes e depois — Estética Dental">
-        <figcaption class="meta-below">
-          <div class="num">Caso 01</div>
-          <div class="label">Estética Dental</div>
-        </figcaption>
+    <div class="gallery-rows">
+      <div class="gallery-featured-row">
+        <div class="gallery-item">
+          <img src="melhor%20caso.jpeg" alt="Antes e depois — Reabilitação com prótese e facetas">
+          <figcaption class="meta-below">
+            <div class="num">Caso 01</div>
+            <div class="label">Reabilitação com Prótese e Facetas</div>
+          </figcaption>
+        </div>
+        <div class="gallery-item">
+          <img src="caso%2015.05.png" alt="Antes e depois — Sorriso Planejado">
+          <figcaption class="meta-below">
+            <div class="num">Caso 02</div>
+            <div class="label">Sorriso Planejado</div>
+          </figcaption>
+        </div>
+        <div class="gallery-item">
+          <img src="2026%2001.jpeg" alt="Antes e depois — Estética Dental">
+          <figcaption class="meta-below">
+            <div class="num">Caso 03</div>
+            <div class="label">Estética Dental</div>
+          </figcaption>
+        </div>
       </div>
-      <div class="gallery-item">
-        <img src="2026%2002.jpeg" alt="Antes e depois — Sorriso Planejado">
-        <figcaption class="meta-below">
-          <div class="num">Caso 02</div>
-          <div class="label">Sorriso Planejado</div>
-        </figcaption>
-      </div>
-      <div class="gallery-item">
-        <img src="2026%2003.jpeg" alt="Antes e depois — Reabilitação Estética">
-        <figcaption class="meta-below">
-          <div class="num">Caso 03</div>
-          <div class="label">Reabilitação Estética</div>
-        </figcaption>
-      </div>
-      <div class="gallery-item">
-        <img src="02.jpg" alt="Antes e depois — Estética Dental">
-        <figcaption class="meta-below">
-          <div class="num">Caso 04</div>
-          <div class="label">Estética Dental</div>
-        </figcaption>
-      </div>
-      <div class="gallery-item">
-        <img src="05.jpg" alt="Antes e depois — Clareamento">
-        <figcaption class="meta-below">
-          <div class="num">Caso 05</div>
-          <div class="label">Clareamento</div>
-        </figcaption>
-      </div>
-      <div class="gallery-item">
-        <img src="07.jpg" alt="Antes e depois — Reabilitação">
-        <figcaption class="meta-below">
-          <div class="num">Caso 06</div>
-          <div class="label">Reabilitação</div>
-        </figcaption>
-      </div>
-      <div class="gallery-item">
-        <img src="08.jpg" alt="Antes e depois — Reabilitação Oral">
-        <figcaption class="meta-below">
-          <div class="num">Caso 07</div>
-          <div class="label">Reabilitação Oral</div>
-        </figcaption>
+
+      <div class="gallery-regular-row">
+        <div class="gallery-item">
+          <img src="2026%2002.jpeg" alt="Antes e depois — Sorriso Harmonizado">
+          <figcaption class="meta-below">
+            <div class="num">Caso 04</div>
+            <div class="label">Sorriso Harmonizado</div>
+          </figcaption>
+        </div>
+        <div class="gallery-item">
+          <img src="2026%2003.jpeg" alt="Antes e depois — Reabilitação Estética">
+          <figcaption class="meta-below">
+            <div class="num">Caso 05</div>
+            <div class="label">Reabilitação Estética</div>
+          </figcaption>
+        </div>
       </div>
     </div>
   </div>
@@ -1969,28 +1996,28 @@ img{max-width:100%;display:block}
     <div class="clinic-content">
       <h2>Um lugar pensado para<br>o seu <span class="accent">sorriso.</span></h2>
       <p>A Sorria Sobral fica no centro de Sobral e atende com hora marcada. Uma equipe de cirurgiãs-dentistas trabalha em conjunto para cuidar de cada paciente com calma, técnica e responsabilidade.</p>
-      <p>Já são mais de 200 mil pacientes atendidos com tratamentos que vão da prevenção à reabilitação completa. A gente acredita que ir ao dentista pode (e deve) ser uma experiência tranquila.</p>
+      <p>Já são mais de 2 mil pacientes atendidos com tratamentos que vão da prevenção à reabilitação completa. A gente acredita que ir ao dentista pode (e deve) ser uma experiência tranquila.</p>
 
       <div class="clinic-pillars">
         <div class="pillar">
           <div class="num">01</div>
-          <div class="label">Equipe completa</div>
-          <div class="desc">Profissionais com especialidades diferentes trabalhando juntos no mesmo plano de tratamento.</div>
+          <div class="label">Equipe multidisciplinar</div>
+          <div class="desc">Profissionais de diferentes especialidades trabalhando em conjunto para oferecer um tratamento completo e personalizado.</div>
         </div>
         <div class="pillar">
           <div class="num">02</div>
           <div class="label">Planejamento digital</div>
-          <div class="desc">Você vê como o sorriso vai ficar antes mesmo de começar o tratamento.</div>
+          <div class="desc">Tecnologia que permite visualizar e planejar o resultado do tratamento com mais precisão e previsibilidade.</div>
         </div>
         <div class="pillar">
           <div class="num">03</div>
-          <div class="label">Atendimento próximo</div>
-          <div class="desc">Tempo para ouvir, explicar e planejar do jeito certo, sem pressa.</div>
+          <div class="label">Atendimento humanizado</div>
+          <div class="desc">Consultas conduzidas com atenção, clareza e cuidado em cada etapa do tratamento.</div>
         </div>
         <div class="pillar">
           <div class="num">04</div>
-          <div class="label">Resultado natural</div>
-          <div class="desc">Sorrisos que combinam com o rosto e com o jeito de cada pessoa.</div>
+          <div class="label">Resultados naturais</div>
+          <div class="desc">Sorrisos planejados para valorizar a harmonia facial e a individualidade de cada paciente.</div>
         </div>
       </div>
 
@@ -1998,7 +2025,8 @@ img{max-width:100%;display:block}
       <div class="clinic-gallery">
         <div class="clinic-gallery-head">
           <div class="gal-tag">Conheça a clínica</div>
-          <div class="gal-title">Estrutura <span class="accent">por dentro.</span></div>
+          <div class="gal-title">Estrutura moderna, ambiente <span class="accent">acolhedor.</span></div>
+          <p class="gal-sub">Atendimento pensado nos mínimos detalhes.</p>
         </div>
 
         <div class="gal-grid-simple">
@@ -2030,29 +2058,29 @@ img{max-width:100%;display:block}
       <div class="section-tag">Tecnologia</div>
       <h2>Odontologia em<br><span class="accent">fluxo digital.</span></h2>
       <p class="flow-lead">
-        Na Sorria Sobral trabalhamos com scanner intraoral e planejamento 3D, sem moldagens com massinha. A tecnologia traz mais precisão para o diagnóstico, mais conforto para o atendimento e mais previsibilidade no resultado final.
+        Na Sorria Sobral, utilizamos escaneamento intraoral e planejamento digital 3D para proporcionar mais precisão, conforto e previsibilidade em cada tratamento. Tudo isso sem as moldagens tradicionais com massa, tornando a experiência mais moderna e confortável para o paciente.
       </p>
 
       <div class="flow-list">
         <div class="flow-item">
           <div class="ico">i</div>
           <div class="name">Mais precisão</div>
-          <div class="desc">Reduz erros de moldagem e distorções de material.</div>
+          <div class="desc">Escaneamentos digitais mais detalhados e maior previsibilidade nos resultados.</div>
         </div>
         <div class="flow-item">
           <div class="ico">ii</div>
-          <div class="name">Mais rapidez</div>
-          <div class="desc">Entrega de próteses em menos tempo do que o método convencional.</div>
+          <div class="name">Mais agilidade</div>
+          <div class="desc">Planejamento e execução dos tratamentos com mais rapidez e eficiência.</div>
         </div>
         <div class="flow-item">
           <div class="ico">iii</div>
           <div class="name">Mais conforto</div>
-          <div class="desc">Acaba com a moldagem de alginato e silicone na boca.</div>
+          <div class="desc">Sem desconforto com moldagens tradicionais durante o atendimento.</div>
         </div>
         <div class="flow-item">
           <div class="ico">iv</div>
-          <div class="name">Você vê antes</div>
-          <div class="desc">Planejamento virtual do resultado antes mesmo de começar o tratamento.</div>
+          <div class="name">Visualização do resultado</div>
+          <div class="desc">Você consegue visualizar o planejamento do sorriso antes mesmo de iniciar o tratamento.</div>
         </div>
       </div>
     </div>
@@ -2067,7 +2095,7 @@ img{max-width:100%;display:block}
     <div class="team-head">
       <div class="section-tag">Nossa Equipe</div>
       <h2>Quem cuida<br>do seu <span class="accent">sorriso.</span></h2>
-      <p>As profissionais que vão te atender na clínica. Cada uma com a sua especialidade.</p>
+      <p>As profissionais que irão te atender em nossa clínica. Cada uma especializada em sua área, para oferecer um atendimento completo, humanizado e com todo cuidado que você merece.</p>
     </div>
 
     <div class="team-grid">
@@ -2217,35 +2245,35 @@ img{max-width:100%;display:block}
       <details class="faq-item">
         <summary>Como funciona a primeira consulta? <span class="ind">+</span></summary>
         <div class="answer">
-          A primeira consulta é uma avaliação. A gente conversa sobre o que você quer, examina sua boca e monta um plano de tratamento com etapas, prazos e valores. Sem pressão para fechar na hora.
+          A primeira consulta é uma avaliação. Conversamos sobre o que você deseja, examinamos sua saúde bucal e montamos um plano de tratamento com etapas, prazos e valores. Tudo explicado com clareza e sem pressão para fechar no mesmo dia.
         </div>
       </details>
 
       <details class="faq-item">
         <summary>Lentes de contato dental estragam o dente? <span class="ind">+</span></summary>
         <div class="answer">
-          Quando o caso é bem indicado, o desgaste é pequeno, em muitas situações quase nenhum. A gente trabalha com técnicas que preservam o máximo possível do dente natural.
+          Quando o caso é bem indicado, o desgaste é mínimo e, em muitos casos, quase inexistente. Trabalhamos com técnicas que preservam ao máximo a estrutura natural dos dentes.
         </div>
       </details>
 
       <details class="faq-item">
         <summary>Quanto tempo demora um tratamento de lentes? <span class="ind">+</span></summary>
         <div class="answer">
-          Depende do caso, mas em média leva de 2 a 4 sessões. O planejamento é feito antes de começar, então você já sabe quantas visitas vai precisar.
+          Depende de cada caso, mas geralmente o tratamento leva entre 2 e 4 sessões. Todo o planejamento é feito antes do início, para que você saiba exatamente quantas visitas serão necessárias.
         </div>
       </details>
 
       <details class="faq-item">
         <summary>Vocês parcelam? <span class="ind">+</span></summary>
         <div class="answer">
-          Parcelamos em cartão. As condições são apresentadas na avaliação, junto com o orçamento do seu tratamento.
+          Sim! Parcelamos no cartão, e as condições são apresentadas durante a avaliação junto com o orçamento do tratamento.
         </div>
       </details>
 
       <details class="faq-item">
         <summary>Atendem por plano odontológico? <span class="ind">+</span></summary>
         <div class="answer">
-          O atendimento é particular. Para alguns procedimentos é possível pedir reembolso ao convênio. Vale conversar com a recepção sobre o seu caso.
+          O atendimento é particular. Em alguns casos, é possível solicitar reembolso ao convênio. Vale conversar com nossa recepção para mais informações.
         </div>
       </details>
 
