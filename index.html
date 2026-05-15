@@ -501,23 +501,12 @@ img{max-width:100%;display:block}
   font-weight:300;
 }
 
-.gallery-rows{
-  display:flex;
-  flex-direction:column;
-  gap:36px;
-}
-.gallery-featured-row{
+.gallery-grid{
   display:grid;
   grid-template-columns:repeat(3, 1fr);
   gap:24px;
-}
-.gallery-regular-row{
-  display:grid;
-  grid-template-columns:repeat(2, 1fr);
-  gap:24px;
-  max-width:780px;
+  max-width:1180px;
   margin:0 auto;
-  width:100%;
 }
 .gallery-item{
   display:flex;
@@ -535,9 +524,6 @@ img{max-width:100%;display:block}
 .gallery-item:hover img{
   transform:translateY(-3px);
   box-shadow:0 20px 40px rgba(0,0,0,.35);
-}
-.gallery-featured-row .gallery-item .meta-below .label{
-  font-size:20px;
 }
 .gallery-item .meta-below{
   display:flex;
@@ -1647,32 +1633,8 @@ img{max-width:100%;display:block}
 
   .transformations-head h2{font-size:34px}
   .transformations-head p{font-size:14px}
-  .gallery-rows{gap:20px}
-  .gallery-featured-row{
-    display:flex;
-    overflow-x:auto;
-    scroll-snap-type:x mandatory;
-    gap:12px;
-    padding:4px 0 14px;
-    margin:0 -20px;
-    padding-left:20px;
-    padding-right:20px;
-    -webkit-overflow-scrolling:touch;
-    scrollbar-width:none;
-  }
-  .gallery-featured-row::-webkit-scrollbar{display:none}
-  .gallery-featured-row .gallery-item{
-    flex:0 0 78%;
-    scroll-snap-align:start;
-    gap:10px;
-  }
-  .gallery-regular-row{
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-    max-width:none;
-  }
-  .gallery-regular-row .gallery-item{gap:10px}
-  .gallery-featured-row .gallery-item .meta-below .label{font-size:16px}
+  .gallery-grid{grid-template-columns:1fr 1fr;gap:14px}
+  .gallery-item{gap:8px}
   .gallery-item .meta-below .label{font-size:14px}
   .gallery-item .meta-below .num{font-size:9px}
 
@@ -1778,8 +1740,7 @@ img{max-width:100%;display:block}
 
 @media (max-width: 380px){
   .hero h1{font-size:38px}
-  .gallery-featured-row .gallery-item{flex:0 0 86%}
-  .gallery-regular-row{grid-template-columns:1fr 1fr;gap:10px}
+  .gallery-grid{grid-template-columns:1fr 1fr;gap:10px}
   .contact-head h2{font-size:36px}
   .marquee-track{font-size:24px}
   .team-grid{grid-template-columns:1fr}
@@ -1939,46 +1900,48 @@ img{max-width:100%;display:block}
       <p>Resultados de pacientes que passaram pela clínica.</p>
     </div>
 
-    <div class="gallery-rows">
-      <div class="gallery-featured-row">
-        <div class="gallery-item">
-          <img src="melhor%20caso.jpeg" alt="Antes e depois — Reabilitação com prótese e facetas">
-          <figcaption class="meta-below">
-            <div class="num">Caso 01</div>
-            <div class="label">Reabilitação com Prótese e Facetas</div>
-          </figcaption>
-        </div>
-        <div class="gallery-item">
-          <img src="caso%2015.05.png" alt="Antes e depois — Sorriso Planejado">
-          <figcaption class="meta-below">
-            <div class="num">Caso 02</div>
-            <div class="label">Sorriso Planejado</div>
-          </figcaption>
-        </div>
-        <div class="gallery-item">
-          <img src="2026%2001.jpeg" alt="Antes e depois — Estética Dental">
-          <figcaption class="meta-below">
-            <div class="num">Caso 03</div>
-            <div class="label">Estética Dental</div>
-          </figcaption>
-        </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="melhor%20caso.jpeg" alt="Antes e depois — Reabilitação com prótese e facetas">
+        <figcaption class="meta-below">
+          <div class="num">Caso 01</div>
+          <div class="label">Reabilitação com Prótese e Facetas</div>
+        </figcaption>
       </div>
-
-      <div class="gallery-regular-row">
-        <div class="gallery-item">
-          <img src="2026%2002.jpeg" alt="Antes e depois — Sorriso Harmonizado">
-          <figcaption class="meta-below">
-            <div class="num">Caso 04</div>
-            <div class="label">Sorriso Harmonizado</div>
-          </figcaption>
-        </div>
-        <div class="gallery-item">
-          <img src="2026%2003.jpeg" alt="Antes e depois — Reabilitação Estética">
-          <figcaption class="meta-below">
-            <div class="num">Caso 05</div>
-            <div class="label">Reabilitação Estética</div>
-          </figcaption>
-        </div>
+      <div class="gallery-item">
+        <img src="2026%2001.jpeg" alt="Antes e depois — Estética Dental">
+        <figcaption class="meta-below">
+          <div class="num">Caso 02</div>
+          <div class="label">Estética Dental</div>
+        </figcaption>
+      </div>
+      <div class="gallery-item">
+        <img src="2026%2002.jpeg" alt="Antes e depois — Sorriso Harmonizado">
+        <figcaption class="meta-below">
+          <div class="num">Caso 03</div>
+          <div class="label">Sorriso Harmonizado</div>
+        </figcaption>
+      </div>
+      <div class="gallery-item">
+        <img src="2026%2003.jpeg" alt="Antes e depois — Reabilitação Estética">
+        <figcaption class="meta-below">
+          <div class="num">Caso 04</div>
+          <div class="label">Reabilitação Estética</div>
+        </figcaption>
+      </div>
+      <div class="gallery-item">
+        <img src="02.jpg" alt="Antes e depois — Estética Dental">
+        <figcaption class="meta-below">
+          <div class="num">Caso 05</div>
+          <div class="label">Estética Dental</div>
+        </figcaption>
+      </div>
+      <div class="gallery-item">
+        <img src="07.jpg" alt="Antes e depois — Reabilitação">
+        <figcaption class="meta-below">
+          <div class="num">Caso 06</div>
+          <div class="label">Reabilitação</div>
+        </figcaption>
       </div>
     </div>
   </div>
