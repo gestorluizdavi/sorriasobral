@@ -1069,9 +1069,9 @@ img{max-width:100%;display:block}
 }
 
 .reviews-grid{
-  max-width:1380px;margin:0 auto;
+  max-width:1100px;margin:0 auto;
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(2,1fr);
   gap:24px;
 }
 .review-card{
@@ -1081,6 +1081,21 @@ img{max-width:100%;display:block}
   border-radius:2px;
   display:flex;flex-direction:column;
 }
+.reviews-cta{
+  text-align:center;
+  margin-top:36px;
+}
+.reviews-cta a{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:14px;
+  color:var(--teal-deep);
+  display:inline-flex;align-items:center;gap:10px;
+  border-bottom:1px solid var(--teal-deep);
+  padding-bottom:4px;
+  transition:gap .3s ease;
+}
+.reviews-cta a:hover{gap:16px}
 .review-card .stars{
   color:var(--gold);font-size:14px;letter-spacing:3px;margin-bottom:18px;
 }
@@ -1562,7 +1577,7 @@ img{max-width:100%;display:block}
   .flow-visual{max-width:520px;margin:0 auto;width:100%;aspect-ratio:4/5}
   .video-section{padding:90px 28px}
   .reviews{padding:90px 28px}
-  .reviews-grid{grid-template-columns:repeat(2,1fr)}
+  .reviews-grid{grid-template-columns:repeat(2,1fr);gap:18px}
   .reviews-head{margin-bottom:50px}
   .faq-section{padding:90px 28px}
   .faq-inner{grid-template-columns:1fr;gap:48px}
@@ -1659,14 +1674,30 @@ img{max-width:100%;display:block}
   .video-head p{font-size:14px}
   .video-frame{max-width:320px;border-radius:14px}
 
-  .reviews{padding:70px 20px}
-  .reviews-head{margin-bottom:36px}
+  .reviews{padding:70px 0 70px}
+  .reviews-head{margin-bottom:36px;padding:0 20px}
   .reviews h2{font-size:32px}
   .reviews-rating{text-align:left}
   .reviews-rating .num{font-size:42px}
-  .reviews-grid{grid-template-columns:1fr;gap:14px}
-  .review-card{padding:28px 24px}
-  .review-card p{font-size:16px}
+  .reviews-grid{
+    grid-template-columns:none;
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    gap:14px;
+    padding:4px 20px 18px;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .reviews-grid::-webkit-scrollbar{display:none}
+  .review-card{
+    padding:26px 22px;
+    flex:0 0 84%;
+    scroll-snap-align:start;
+  }
+  .review-card p{font-size:15px;margin-bottom:18px}
+  .reviews-cta{padding:0 20px;margin-top:24px}
+  .reviews-cta a{font-size:13px}
 
   .faq-section{padding:70px 20px}
   .faq-side h2{font-size:32px}
@@ -2117,7 +2148,19 @@ img{max-width:100%;display:block}
   <div class="reviews-grid">
     <div class="review-card">
       <div class="stars">★★★★★</div>
-      <p>"Fui atendido pela Dra. Ingrid e só tenho elogios! Desde o primeiro momento ela foi muito atenciosa, paciente e Super profissional. Me explicou tudo com clareza o meu tratamento e tirou todas minhas dúvidas, e sempre me tratou com muito cuidado, não só ela mas todos, a clínica Sorria Sobral também é muito organizada, limpa e acolhedora. Estou muito satisfeito com o meu tratamento e recomendo demais! Excelente atendimento."</p>
+      <p>"Na Clínica Sorria Sobral realizei um sonho que pensei ser impossível ser realizado, ter meu sorriso novamente. Encontrei profissionais excelentes, com qualificação e atendimento personalizado. O acolhimento é sentido em todos os espaços do ambiente. Super indico!"</p>
+      <div class="author">
+        <div class="avatar">F</div>
+        <div>
+          <div class="name">Fabiana Ferreira</div>
+          <div class="source">Google · 7 meses atrás</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Fui atendido pela Dra. Ingrid e só tenho elogios. Desde o primeiro momento ela foi muito atenciosa, paciente e super profissional. Me explicou tudo com clareza e tirou todas minhas dúvidas. A clínica também é muito organizada, limpa e acolhedora."</p>
       <div class="author">
         <div class="avatar">W</div>
         <div>
@@ -2129,7 +2172,7 @@ img{max-width:100%;display:block}
 
     <div class="review-card">
       <div class="stars">★★★★★</div>
-      <p>"Atendimento excelente! A doutora trabalha com muita qualidade, sempre com cuidado e precisão em cada detalhe. A equipe é extremamente organizada e atenciosa, e todas as vezes fui tratado muito bem. Recomendo de olhos fechados!"</p>
+      <p>"Atendimento excelente. A doutora trabalha com muita qualidade, sempre com cuidado e precisão em cada detalhe. A equipe é extremamente organizada e atenciosa. Recomendo de olhos fechados!"</p>
       <div class="author">
         <div class="avatar">Y</div>
         <div>
@@ -2150,42 +2193,12 @@ img{max-width:100%;display:block}
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="review-card">
-      <div class="stars">★★★★★</div>
-      <p>"Muito boa, uma clínica que transmite confiança e trabalha com excelência e qualidade, sem contar no atendimento nota 10. Parabéns!"</p>
-      <div class="author">
-        <div class="avatar">L</div>
-        <div>
-          <div class="name">Liziane Sousa</div>
-          <div class="source">Google · 2 meses atrás</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="review-card">
-      <div class="stars">★★★★★</div>
-      <p>"Muito bom, adoro o jeito que você trata os pacientes, com os cuidados para melhorar cada vez mais os nossos sorrisos. Continue sendo essa profissional que vc é!!!"</p>
-      <div class="author">
-        <div class="avatar">D</div>
-        <div>
-          <div class="name">Davi Xavier</div>
-          <div class="source">Google · 5 meses atrás</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="review-card">
-      <div class="stars">★★★★★</div>
-      <p>"Na Clínica Sorria Sobral realizei um sonho que pensei ser impossível ser realizado, ter meu sorriso novamente. Na clínica encontrei profissionais excelentes, com qualificação e atendimento personalizado que você se sente confortável e confiante em cada procedimento. O acolhimento é sentido em todos os espaços do ambiente. Super indico!"</p>
-      <div class="author">
-        <div class="avatar">F</div>
-        <div>
-          <div class="name">Fabiana Ferreira</div>
-          <div class="source">Google · 7 meses atrás</div>
-        </div>
-      </div>
-    </div>
+  <div class="reviews-cta">
+    <a href="https://share.google/y6Dog2Uh1L2TNpFgb" target="_blank" rel="noopener">
+      Ver todas as avaliações no Google →
+    </a>
   </div>
 </section>
 
