@@ -272,7 +272,7 @@ img{max-width:100%;display:block}
   display:flex;
   gap:60px;
   justify-content:center;
-  align-items:flex-start;
+  align-items:center;
   border-top:1px solid rgba(245,239,230,.15);
   padding-top:36px;
   max-width:680px;
@@ -695,10 +695,10 @@ img{max-width:100%;display:block}
 .gal-cell.tall-2{grid-column:span 4;aspect-ratio:3/4}
 .gal-cell.wide-2{grid-column:span 4;aspect-ratio:3/4}
 
-/* Galeria simplificada — 4 colunas iguais */
+/* Galeria simplificada — 3 fotos compactas */
 .gal-grid-simple{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(3,1fr);
   gap:14px;
 }
 .gal-grid-simple .gal-cell{
@@ -1546,13 +1546,15 @@ img{max-width:100%;display:block}
   .nav{padding:18px 28px}
   .nav.scrolled{padding:14px 28px}
   .hero{padding:130px 28px 70px}
+  .hero-meta{flex-direction:column;gap:28px;max-width:none;align-items:center;text-align:center}
+  .hero-meta-item{text-align:center;width:100%}
+  .hero-meta-divider{display:none}
   .section{padding:90px 28px}
   .treatments-head{grid-template-columns:1fr;gap:32px;margin-bottom:50px}
   .treatments-groups{grid-template-columns:repeat(2,1fr);gap:18px}
   .treatment-card{padding:34px 28px;gap:18px}
   .clinic{padding:90px 28px}
-  .gal-grid-simple{grid-template-columns:repeat(2,1fr);gap:12px}
-  .gal-hero{aspect-ratio:16/10}
+  .gal-grid-simple{grid-template-columns:repeat(3,1fr);gap:12px}
   .team{padding:90px 28px}
   .team-grid{grid-template-columns:repeat(2,1fr);gap:24px}
   .flow{padding:90px 28px}
@@ -1690,8 +1692,7 @@ img{max-width:100%;display:block}
   .location-warning .text strong{font-size:14px}
   .clinic-gallery{margin-top:60px}
   .clinic-gallery-head{margin-bottom:24px}
-  .gal-hero{aspect-ratio:4/3;margin-bottom:12px}
-  .gal-grid-simple{grid-template-columns:repeat(2,1fr);gap:10px}
+  .gal-grid-simple{grid-template-columns:repeat(3,1fr);gap:8px}
 
   .cta-banner{padding:60px 20px}
   .cta-inner{flex-direction:column;align-items:flex-start;text-align:left;gap:28px}
@@ -1717,8 +1718,8 @@ img{max-width:100%;display:block}
   .contact-head h2{font-size:36px}
   .marquee-track{font-size:24px}
   .team-grid{grid-template-columns:1fr}
-  .gal-grid-simple{grid-template-columns:1fr;gap:10px}
-  .gal-grid-simple .gal-cell{aspect-ratio:16/10}
+  .gal-grid-simple{grid-template-columns:repeat(3,1fr);gap:6px}
+  .gal-grid-simple .gal-cell{aspect-ratio:3/4}
   .treatments-groups{grid-template-columns:1fr;gap:12px}
   .treatment-card{padding:24px 22px}
   .treatment-card .name{font-size:22px}
@@ -1969,22 +1970,15 @@ img{max-width:100%;display:block}
           <div class="gal-title">Estrutura <span class="accent">por dentro.</span></div>
         </div>
 
-        <div class="gal-hero">
-          <img src="ambiente.jpeg" alt="Recepção da Sorria Sobral" loading="lazy">
-        </div>
-
         <div class="gal-grid-simple">
           <div class="gal-cell">
-            <img src="ambiente%2003.jpeg" alt="Recepção da Sorria Sobral - vista lateral" loading="lazy">
+            <img src="ambiente.jpeg" alt="Recepção da Sorria Sobral" loading="lazy">
           </div>
           <div class="gal-cell">
             <img src="ambiente%2001.jpeg" alt="Consultório odontológico" loading="lazy">
           </div>
           <div class="gal-cell">
             <img src="ambiente%2004.jpeg" alt="Consultório odontológico completo" loading="lazy">
-          </div>
-          <div class="gal-cell">
-            <img src="ambiente%2002.jpeg" alt="Consultório odontológico — outra vista" loading="lazy">
           </div>
         </div>
       </div>
